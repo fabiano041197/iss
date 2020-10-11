@@ -8,6 +8,7 @@ services:
       - "8080:8080"
     depends_on:
     - db
+    - angularapp
  db:
     image: postgres
     ports:
@@ -16,4 +17,9 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_DB=treinamento
-
+ angularapp:
+    container_name: angular-app
+    image: angular-app
+    build: ./avaliacao
+    ports: 
+      - "80:80"
