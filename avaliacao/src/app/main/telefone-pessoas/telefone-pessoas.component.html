@@ -1,0 +1,41 @@
+<p-panel header="Cadastro de telefones da pessoa {{ pessoa.nome }}">
+    <button pButton type="button" (click)="showForm=true" label="Cadastrar" ></button>
+    <br>
+    <br>
+    <p-table [value]="pessoaTelefones" styleClass="p-datatable-sm p-datatable-gridlines">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Telefone</th>
+                <th>Principal</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-telefone>
+            <tr>
+                <td>{{ telefone.telefone}}</td>
+                <td>{{ telefone.principal == true ? "Sim" : "Nao"}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</p-panel>
+
+<p-dialog header="Telefones da pessoa {{ pessoa.nome }}" [(visible)]="showForm" [style]="{width: '500px'}" [baseZIndex]="10000">
+    <div class="card">
+        <div class="p-fluid p-grid">
+            <div class="p-field p-col-8">
+                <label for="nome">Telefone</label>
+                <p-inputMask mask="(99) 99999-9999" [(ngModel)]="telefoneForm.telefone" placeholder="(99) 999-9999"></p-inputMask>
+            </div>
+            <div class="p-field p-col-4">
+                <label for="city3">Principal</label>
+                <p-selectButton [options]="options" [(ngModel)]="telefoneForm.principal"></p-selectButton>
+            </div>
+        </div>
+    </div>
+    <ng-template pTemplate="footer">
+        <p-button icon="pi pi-times" (click)="showForm=false" label="Cancelar" styleClass="p-button-text"></p-button>
+        <p-button icon="pi pi-check" (click)="cadastrar()" label="Cadastrar"></p-button>
+    </ng-template>
+</p-dialog>
+
+
+<p-toast life="5000" ></p-toast>

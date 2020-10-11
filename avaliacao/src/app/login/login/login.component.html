@@ -1,0 +1,24 @@
+<div>
+    <p-card header="Login" subheader="Informe seu usuário e senha" [style]="{width: '360px', margin: '0 auto', marginTop: '120px'}" styleClass="p-card-shadow">
+        <p-header>
+            <img alt="Card" src="assets/images/login.png">
+        </p-header>
+    
+        <div class="p-fluid">
+            <div class="p-field">
+                <input id="usuario" [(ngModel)]="usuario.login" type="text" placeholder="Usuario" required="true" pInputText> 
+            </div>
+            <br>
+            <div class="p-field">
+                <input id="senha" [(ngModel)]="usuario.senha" type="password" placeholder="Senha" required="true" pInputText> 
+            </div>
+        </div>
+    
+        <ng-template pTemplate="footer">
+            <p-button [style]="{'width':'100%'}" label="Login" (click)="login()"></p-button>
+            <a [routerLink]="['/registrar']" [style]="{'text-decoration':'none',color:'gray', fontSize:'12px'}" >Registrar</a>
+        </ng-template>
+    </p-card>
+</div>
+
+<p-toast life="5000" ></p-toast>

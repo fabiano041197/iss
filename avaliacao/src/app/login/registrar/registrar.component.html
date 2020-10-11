@@ -1,0 +1,27 @@
+<div>
+    <p-card header="Registrar" subheader="Realize seu cadastro" [style]="{width: '360px', margin: '0 auto', marginTop: '120px'}" styleClass="p-card-shadow">    
+        <p-header>
+            <img alt="Card" src="assets/images/login.png">
+        </p-header>
+
+        <div class="p-fluid">
+            <div class="p-field">
+                <input id="usuario" type="text" [(ngModel)]="usuario.login" placeholder="Usuario" pInputText> 
+            </div>
+            <br>
+            <div class="p-field">
+                <input id="senha" type="password" [(ngModel)]="usuario.senha" placeholder="Senha" pInputText> 
+            </div>
+            <br>
+            <div class="p-field">
+                <input id="repetirSenha" type="password" [(ngModel)]="repetirSenha" placeholder="Repetir senha" pInputText> 
+            </div>
+        </div>
+        <ng-template pTemplate="footer">
+            <p-button [style]="{'width':'100%'}" label="Cadastrar" (click)="registrar()"></p-button>
+            <a [routerLink]="['']" [style]="{'text-decoration':'none',color:'gray', fontSize:'12px'}" >Efetuar login</a>
+        </ng-template>
+    </p-card>
+</div>
+
+<p-toast life="5000" ></p-toast>

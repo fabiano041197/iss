@@ -1,0 +1,41 @@
+<p-panel header="Cadastro de endereço da pessoa {{ pessoa.nome }}">
+    <button pButton type="button" (click)="showForm=true" label="Cadastrar" ></button>
+    <br>
+    <br>
+    <p-table [value]="pessoaEnderecos" styleClass="p-datatable-sm p-datatable-gridlines">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Endereco</th>
+                <th>Principal</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-endereco>
+            <tr>
+                <td>{{endereco.endereco}}</td>
+                <td>{{ endereco.principal == true ? "Sim" : "Nao"}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</p-panel>
+
+<p-dialog header="Endereços da pessoa {{ pessoa.nome }}" [(visible)]="showForm" [style]="{width: '50vw'}" [baseZIndex]="10000">
+    <div class="card">
+        <div class="p-fluid p-grid">
+            <div class="p-field p-col-10">
+                <label for="nome">Endereço</label>
+                <input [(ngModel)]="enderecoForm.endereco" id="nome" type="text" pInputText> 
+            </div>
+            <div class="p-field p-col-2">
+                <label for="city3">Principal</label>
+                <p-selectButton [options]="options" [(ngModel)]="enderecoForm.principal"></p-selectButton>
+            </div>
+        </div>
+    </div>
+    <ng-template pTemplate="footer">
+        <p-button icon="pi pi-times" (click)="showForm=false" label="Cancelar" styleClass="p-button-text"></p-button>
+        <p-button icon="pi pi-check" (click)="cadastrar()" label="Cadastrar"></p-button>
+    </ng-template>
+</p-dialog>
+
+
+<p-toast life="5000" ></p-toast>
