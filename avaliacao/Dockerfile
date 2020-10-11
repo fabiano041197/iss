@@ -1,10 +1,10 @@
 FROM node:10-alpine as angular
 WORKDIR /app
-COPY package.json /app
-RUN npm install --silent
-COPY . .
-RUN npm run build
+COPY . /app
+RUN npm install
+RUN npm install -g @angular/cli 
+RUN ng build --prod
 
 FROM nginx
-COPY --from=angular dist/avaliacao /usr/share/nginx/html
+COPY --from=angular app/dist/avaliacao /usr/share/nginx/html
 RUN chmod -R 777 /usr/share/nginx/html/
