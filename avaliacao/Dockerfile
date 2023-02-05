@@ -5,6 +5,6 @@ RUN npm install
 RUN npm install -g @angular/cli 
 RUN ng build --prod
 
-FROM nginx
+FROM nginx:1.23
 COPY --from=angular app/dist/avaliacao /usr/share/nginx/html
 RUN chmod -R 777 /usr/share/nginx/html/
